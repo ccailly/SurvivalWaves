@@ -19,27 +19,27 @@
 - **⚖️ License**
 
 - # SurvivalWaves
--** UserStories**:
-En tant que Joueur :
-  -Je peux me déplacer d'une case par tick
-  -Je peux attaquer les zombies à l'aide d'une arme à feu
-  -Tuer un zombie redonne instantanément des munitions
-  -Je peux récupérer une arme par terre pour améliorer mes stats de dégats
-  -Je peux ramasser des trousses de soins par terre et me soigne
-  -Je peux voir toutes les unités joueur/objets/non-joeurs de la carte
-  -Je peux améliorer mes stats de vie/dégats au fur et à mesure du nombre de zombies que je tue
-En tant que zombie :
-  -Je peux me déplacement aléatoirement
-  -Je peux détecter un humain dans un rayon X pour lui foncer dessus
-  -Je peux détecter un humain à nimporte quel distance si il me tire dessus
-  -Je peux attaquer et transformer un humain en X coups
-  -Je ne peux pas ramasser d'armes
- En tant qu'Arbitre :
- -Je peux lancer une nouvelle vague
- -Je peux faire apparaitre des objets au début d'une vague
- -Je peux faire réaparaitre tout les joueurs à chaque nouvelle manche
- -Je peux afficher les changement de manche
- -Je peux faire apparaitre des zombies
- -Je peux augmenter le nombres de zombies à chaque vague et/ou améliorer leurs stats
- -A la fin d'une manche, je peux modifier le score de la manche dans le scoreboard
- -Si tout les survivants sont mort, je met fin à la vague en cours et note le nombre de manches passé dans le scoreboard
+  * UserStories:
+     * **En tant que Joueur** :
+        * Je peux me déplacer d'une case par tick
+        * Je peux attaquer les zombies à l'aide d'une arme à feu
+        * Tuer un zombie redonne instantanément des munitions
+        * Je peux récupérer une arme par terre pour améliorer mes stats de dégats
+        * Je peux ramasser des trousses de soins par terre et me soigne
+        * Je peux voir toutes les unités joueur/objets/non-joeurs de la carte
+        * Je peux améliorer mes stats de vie/dégats au fur et à mesure du nombre de zombies que je tue
+    * **En tant que zombie** :
+        * Je peux me déplacement aléatoirement
+        * Je peux détecter un humain dans un rayon X pour lui foncer dessus
+        * Je peux détecter un humain à nimporte quel distance si il me tire dessus
+        * Je peux attaquer et transformer un humain en X coups
+        * Je ne peux pas ramasser d'armes
+    * **En tant qu'Arbitre** :
+        * Je peux lancer une nouvelle vague
+        * Je peux faire apparaitre des objets au début d'une vague
+        * Je peux faire réaparaitre tout les joueurs à chaque nouvelle manche
+        * Je peux afficher les changement de manche
+        * Je peux faire apparaitre des zombies
+        * Je peux augmenter le nombres de zombies à chaque vague et/ou améliorer leurs stats
+        * A la fin d'une manche, je peux modifier le score de la manche dans le scoreboard
+        * Si tout les survivants sont mort, je met fin à la vague en cours et note le nombre de manches passé dans le scoreboard
