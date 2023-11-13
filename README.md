@@ -17,3 +17,14 @@
 - **🛣️ Roadmap**
 - **🧑‍💻 Auteur**
 - **⚖️ License**
+
+- # SurvivalWaves
+
+En tant que Joueur :
+  -Je peux me déplacer d'une case par tick
+  -Je peux attaquer les zombies à l'aide d'une arme à feu
+  -Tuer un zombie redonne instantanément des munitions
+  -Je peux récupérer une arme par terre pour améliorer mes stats de dégats
+En tant que zombie :
+
+En tant qu'Arbitre :
