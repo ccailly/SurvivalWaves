@@ -38,5 +38,5 @@ noms_zombies = [
 ]
 
 # Create zombies
-zombie_manager = ZombieManager(arbitre)
-zombie_manager.create_zombies(noms_zombies)
+zombie_manager = ZombieManager(arbitre, noms_zombies)
+zombie_manager.create_zombies()
