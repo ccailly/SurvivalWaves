@@ -24,3 +24,9 @@ class Zombie (pytactx.Agent):
         Make the zombie chase a player
         """
         pass
+
+    def is_alive(self):
+        """
+        Check if the zombie is alive
+        """
+        return self.life > 0
