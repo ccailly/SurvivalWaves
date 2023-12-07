@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+import os
 import j2l.pytactx.agent as pytactx
 from time import sleep 
 from random import randint
@@ -7,8 +9,11 @@ from Referee import Referee
 from serverRules import ServerRules
 from ZombieManager import ZombieManager
 
+load_dotenv()
+playerId = os.environ['PLAYER_ID']
+
 # Création de l'arbitre
-referee = Referee(playerId='21122003',
+referee = Referee(playerId=playerId,
 						arena='survivalwaves',
 						username="demo",
 						password="demo",
@@ -24,7 +29,6 @@ ServerRules(referee).applyRules()
 # Lancement de l'arbitre
 referee.run
 
-# Zombies names
 noms_zombies = [
     "RigoloMort",
     "CervelleJoyeuse",
@@ -32,13 +36,6 @@ noms_zombies = [
     "Risquatouille",
     "FarceurDécomposé",
 ]
-
-# Rules
-arbitre.ruleArena("reset", True)
-arbitre.ruleArena("profiles", ["arbitre", "zombie"])
-arbitre.ruleArena("pIcons", ["👮", "🧟"])
-arbitre.ruleArena("dtMove", [0, 1000])
-arbitre.update()
 
 # Create zombies
 zombie_manager = ZombieManager(arbitre)
