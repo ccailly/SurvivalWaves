@@ -17,7 +17,7 @@ class ZombieManager:
         zombie = Zombie(name)
         zombie.update()
         
-        self.zombie_rules(zombie, name)
+        self.zombie_rules(name)
         self.manage_state(zombie)
 
     def create_zombies(self):
@@ -38,12 +38,12 @@ class ZombieManager:
             
         print("Tous les threads ont terminé.")
 
-    def zombie_rules(self, arbitre: pytactx.Agent, name: str):
+    def zombie_rules(self, name: str):
         """
         Define the rules for the zombies
         """
         # Change the profile of the zombie
-        self.arbitre.rulePlayer(name, "profile", 1)
+        self.arbitre.rulePlayer(name, 'profile', 1)
         self.arbitre.update()
 
     def manage_state(self, zombie: Zombie):
