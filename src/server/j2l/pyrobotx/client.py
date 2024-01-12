@@ -223,7 +223,7 @@ class RobotRequestBuilder:
 			if ( "duration" in req["led"] ):
 				params.append("ledt="+str(req["led"]["duration"]))
 			if ( req["led"]["animation"] != "custom" and 
-       			 req["led"]["animation"] in self.__fromLedAnimationToLedA ):
+						 req["led"]["animation"] in self.__fromLedAnimationToLedA ):
 				params.append("leda="+self.__fromLedAnimationToLedA[req["led"]["animation"]])
 			elif ( req["led"]["animation"] == "custom" ):
 				animStr = "led=["
@@ -523,13 +523,13 @@ class CameraReader:
 
 class OvaClientHttp(IRobot):
 	def __init__(self, 
-		  routeSensors,
-		  routeCamera,
-		  routeActuators,
-	      url:str="http://192.168.4.1", 
-	      imgOutputPath:str or None="img.jpeg", 
-		  verbosity:int=3, 
-		  welcomePrint=True
+			routeSensors,
+			routeCamera,
+			routeActuators,
+				url:str="http://192.168.4.1", 
+				imgOutputPath:str or None="img.jpeg", 
+			verbosity:int=3, 
+			welcomePrint=True
 		):
 		"""
 		Build an IRobot http client to communicate directly to ova 
@@ -753,7 +753,7 @@ class OvaClientHttpV1(OvaClientHttp):
 	def getBatteryVoltage(self) -> int :
 		state = self.getRobotState()
 		if ( "sensors" not in state or 
-      		"battery" not in state["sensors"] or 
+					"battery" not in state["sensors"] or 
 			"voltage" not in state["sensors"]["battery"] ):
 			return 0
 		return state["sensors"]["battery"]["voltage"]
@@ -764,7 +764,7 @@ class OvaClientHttpV1(OvaClientHttp):
 	def getFrontLuminosity(self) -> int :
 		state = self.getRobotState()
 		if ( "sensors" not in state or 
-      		"photoFront" not in state["sensors"] or 
+					"photoFront" not in state["sensors"] or 
 			"lum" not in state["sensors"]["photoFront"] ):
 			return 0
 		return state["sensors"]["photoFront"]["lum"]
@@ -775,7 +775,7 @@ class OvaClientHttpV1(OvaClientHttp):
 	def getBackLuminosity(self) -> int :
 		state = self.getRobotState()
 		if ( "sensors" not in state or 
-      		"photoBack" not in state["sensors"] or 
+					"photoBack" not in state["sensors"] or 
 			"lum" not in state["sensors"]["photoBack"] ):
 			return 0
 		return state["sensors"]["photoBack"]["lum"]
@@ -841,7 +841,7 @@ class OvaClientMqtt(IRobot):
 	def __init__(self,robotId:str or None=None, arena:str or None=None, username:str or None=None, password:str or None=None, server:str or None=None, port:int=1883, imgOutputPath:str or None="img.jpeg", autoconnect:bool=True, useProxy:bool=True, verbosity:int=3, clientId:str or None=None, welcomePrint=True):
 		"""
 		Build a mqtt client to communicate with an ova robot through a mqtt broker
-		
+
 		To join a public arena using mqtt.jusdeliens.com as server/broker, 
 		note that only read operations on robot will be allowed by default.
 		To be granted write authorization on a robot in an arena, an arena admin
@@ -856,7 +856,7 @@ class OvaClientMqtt(IRobot):
 
 		Once connected, the camera stream is automatically enabled
 		You can disable it using enableCamera(False) to reduce bandwidth consumption
-		
+
 		### Arguments
 		* `robotId` - The unique name of the robot to control (e.g. ovaxxxxxxxxxxxx) as str
 		* `clientId` - The name of the ovamqttclient used for logging in the broker. Leave None will use a random one
@@ -887,7 +887,7 @@ class OvaClientMqtt(IRobot):
 		if ( password == None ):
 			password=input("🔑 password: ")
 		self.__startTime = datetime.now()
-		
+
 		userLogin=""
 		try: userLogin=str(os.getlogin()) 
 		except: ...
@@ -999,35 +999,6 @@ class OvaClientMqtt(IRobot):
 			self.connect()
 		self.__events.onUpdated()
 
-		# Tx requests
-		dtTx = (datetime.now()-self.__prevTx).total_seconds() * 1000
-		if ( dtTx > self.__dtTxToWait ):
-			self.__prevTx = datetime.now()
-			robotReqTopicsToPub = [self.__topicPlayerRequest]
-			if ( self.__useProxy == False ):
-				robotReqTopicsToPub.append(self.__topicRobotRequest)
-			reqsToTx = [
-				(self.__robotActuatorsRequest.toDict(), robotReqTopicsToPub),
-				(self.__reqPlayer, [self.__topicPlayerRequest]),
-				(self.__reqArena, [self.__topicArenaRequest])
-			]
-			for req in reqsToTx:
-				request, topicsToPub = req
-				if ( len(request) == 0 ):
-					continue
-				payloadStr = json.dumps(request)
-				payloadBytes = str.encode(payloadStr)
-				for topic in topicsToPub:
-					anx.debug("📡 Tx "+str(self.__id)+" to topic "+str(topic)+": "+str(len(payloadBytes))+" byte(s)")
-					self.__client.publish(topic, payloadBytes)
-
-			self.__reqArena = {}
-			self.__reqPlayer = {}
-			self.__robotActuatorsRequest.reset()
-
-		if (enableSleep):
-			time.sleep(DefaultClientSettings.dtSleepUpdate/1000)
-		
 		# Rx states and stream
 		if ( self.__rxFromRobot ):
 			self.__rxFromRobot = False
@@ -1035,7 +1006,7 @@ class OvaClientMqtt(IRobot):
 			if ( self.__isConnectedToRobot == False ):
 				self.__isConnectedToRobot = True
 				self.__events.onRobotConnected()
-			# Swap buf img and sensor states 
+			# Swap bug img and sensor states 
 			if ( self.__cameraReader.update() > 0 ):
 				self.__events.onImageReceived(self.__cameraReader.getImage())
 			try:
@@ -1080,6 +1051,32 @@ class OvaClientMqtt(IRobot):
 			self.__isConnectedToArena = False
 			self.__events.onArenaDisconnected(self.__arena)
 
+		# Tx requests
+		dtTx = (datetime.now()-self.__prevTx).total_seconds() * 1000
+		if ( dtTx > self.__dtTxToWait ):
+			self.__prevTx = datetime.now()
+			robotReqTopicsToPub = [self.__topicPlayerRequest]
+			if ( self.__useProxy == False ):
+				robotReqTopicsToPub.append(self.__topicRobotRequest)
+			reqsToTx = [
+				(self.__robotActuatorsRequest.toDict(), robotReqTopicsToPub),
+				(self.__reqPlayer, [self.__topicPlayerRequest]),
+				(self.__reqArena, [self.__topicArenaRequest])
+			]
+			for req in reqsToTx:
+				request, topicsToPub = req
+				if ( len(request) == 0 ):
+					continue
+				payloadStr = json.dumps(request)
+				payloadBytes = str.encode(payloadStr)
+				for topic in topicsToPub:
+					anx.debug("📡 Tx "+str(self.__id)+" to topic "+str(topic)+": "+str(len(payloadBytes))+" byte(s)")
+					self.__client.publish(topic, payloadBytes)
+
+			self.__reqArena = {}
+			self.__reqPlayer = {}
+			self.__robotActuatorsRequest.reset()
+
 		# Ping server
 		dtPing = (datetime.now()-self.__prevPing).total_seconds() * 1000
 		if ( dtPing > DefaultClientSettings.dtPing ):
@@ -1091,6 +1088,8 @@ class OvaClientMqtt(IRobot):
 				anx.debug("📡 Ping "+str(self.__id))
 				self.__client.publish(topic, payloadBytes)
 
+		if (enableSleep):
+			time.sleep(DefaultClientSettings.dtSleepUpdate/1000)
 
 	def getRobotId(self) -> str :
 		return self.__idRobot
@@ -1129,7 +1128,7 @@ class OvaClientMqtt(IRobot):
 		return self.__playerState
 	def getArenaState(self) -> dict[str,Any] :
 		return self.__arenaState
-	
+
 	def enableCamera(self, enable:bool):
 		self.__cameraEnabled = enable
 	def stop(self):
@@ -1164,7 +1163,7 @@ class OvaClientMqtt(IRobot):
 			return False
 	def print(self) -> None:
 		self.__printer.print()
-		
+
 	def __changeRobot(self, robotId, autoconnect):
 		anx.info("⏳ Connecting to robot "+str(robotId)+" ...")
 		self.disconnect()
