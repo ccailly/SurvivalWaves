@@ -1,12 +1,9 @@
 import time
 from Referee import Referee
 from serverRules import ServerRules
-import os
 
-# Définir l'ID du joueur
-playerId = os.environ['PLAYER_ID']
 # Création de l'arbitre
-referee = Referee(playerId,
+referee = Referee(playerId='21112003',
 						arena='survivalwaves',
 						username="demo",
 						password="demo",
