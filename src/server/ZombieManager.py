@@ -55,5 +55,10 @@ class ZombieManager:
                 print("Le zombie", zombie.playerId, "est mort.")
                 break
             
-            zombie.wander()
+            coords_closest_player = zombie.player_close()
+            if coords_closest_player is None:
+                zombie.wander()
+            else:
+                zombie.chase(coords_closest_player[0], coords_closest_player[1])
+
             zombie.update()
