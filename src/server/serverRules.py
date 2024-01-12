@@ -1,8 +1,10 @@
-import j2l.pytactx.agent as pytactx
+import time
+
+from Referee import Referee
 
 class ServerRules:
-    def __init__(self, arbitre: pytactx.Agent) -> None:
-        self._arbitre = arbitre
+    def __init__(self, referee: Referee) -> None:
+        self._referee = referee
 
     def getRules(self) -> dict:
         """
@@ -49,7 +51,22 @@ class ServerRules:
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
             ],
-            'mapImgs': ['', 'rgba(255, 255, 255, 0.5)']
+            'mapImgs': ['', 'rgba(255, 255, 255, 0.5)', 'https://d31sxl6qgne2yj.cloudfront.net/wordpress/wp-content/uploads/20190121140745/Minecraft-Zombie-Head.jpg'],
+            'mapHit' : [0, 0, 0],
+            'mapBreakable' : [False, False, True],
+            'pImgs' : ['https://d31sxl6qgne2yj.cloudfront.net/wordpress/wp-content/uploads/20190121140737/Minecraft-Villager-Head.jpg', 'https://d31sxl6qgne2yj.cloudfront.net/wordpress/wp-content/uploads/20190121140740/Minecraft-Wither-Head.jpg', 'https://d31sxl6qgne2yj.cloudfront.net/wordpress/wp-content/uploads/20190121140745/Minecraft-Zombie-Head.jpg'],
+            'pIcons' : ['', '', ''], 
+            'profiles' : ['survivor', 'arbitre', 'zombie'],
+            'weapons' : ['none', 'beam'],
+            'wIcons' : ['', ''],
+            'range' : [10, 0, 5],
+            'invisible' : [False, True, False],
+
+            # Team rules
+            'teamColor' : [[0, 0, 255], [255, 0, 0]],
+            'teamNb' : 2,
+            'teamName' : ['Survivors', 'Zombies'],
+            'spawnArea' : {'x':[5, 14], 'y':[30, 6], 'r':[3, 4]},
         }
     
     def applyRules(self):
@@ -57,6 +74,9 @@ class ServerRules:
         Apply the rules to the game
         """
         for rule in self.getRules():
-            self._arbitre.ruleArena(rule, self.getRules()[rule])
+            self._referee.ruleArena(rule, self.getRules()[rule])
+            self._referee.update()
+            time.sleep(0.3)
 
-        self._arbitre.update()
+        self._referee.update()
+        time.sleep(3)

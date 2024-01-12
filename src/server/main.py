@@ -1,13 +1,20 @@
 import time
-import j2l.pytactx.agent as pytactx
+from Referee import Referee
 from serverRules import ServerRules
 
 # Création de l'arbitre
-arbitre = pytactx.Agent(playerId='24052003',
+referee = Referee(playerId='24052003',
 						arena='survivalwaves',
 						username="demo",
 						password="demo",
 						server="mqtt.jusdeliens.com",
 						verbosity=2)
 
-ServerRules(arbitre).applyRules()
+# Reset de l'arène
+referee.resetArena()
+
+# Application des règles de l'arène
+ServerRules(referee).applyRules()
+
+# Lancement de l'arbitre
+referee.run().join()

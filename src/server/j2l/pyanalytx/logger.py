@@ -46,7 +46,6 @@ class Verbosity:
 			return Verbosity.__fromIntToString[verbosity]
 		else:
 			return "none"
-		
 class ILogger:
 	def enable(self, isEnabled:bool):
 		pass
@@ -56,7 +55,6 @@ class ILogger:
 		pass
 	def log(self, verbosity, message, caller, arg):
 		pass
-
 class ConsoleLogger(ILogger):
 	def __init__(self, verbosity=Verbosity.ERROR, autoenable:bool=True):
 		self.__verbosity = verbosity
@@ -80,7 +78,6 @@ class ConsoleLogger(ILogger):
 		(filename, line_number, function_name, lines, index) = inspect.getframeinfo(previousFrame)
 		#print(Verbosity.fromIntToString(verbosity)+'\t'+str(line_number)+':'+str(index)+'\t'+now.strftime("%m/%d/%Y-%H:%M:%S")+'-'+str(msEllapsedSinceStart)+'\t'+message)
 		print(Verbosity.fromIntToString(verbosity)+'\t'+now.strftime("%m/%d/%Y-%H:%M:%S")+'-'+str(msEllapsedSinceStart)+'\t'+Path(filename).name+'\t'+str(line_number)+':'+str(index)+'\t'+function_name+'\t'+message+'\n')
-
 class FileLogger(ILogger):
 	def update(logger):
 		while logger.__isEnabled:

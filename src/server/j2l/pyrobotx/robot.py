@@ -348,7 +348,7 @@ class IRobot:
 			2. Rewrite this method to override its behaviour
 			3. Instanciate the robot class
 			4. Call update() from OvaClientMqtt periodically in the main loop
-			
+
 		### Arguments
 		* `robotState` - The new sensor's states and other attributes of the robot
 		as a dict of str key and any typed value
@@ -364,7 +364,7 @@ class IRobot:
 			2. Rewrite this method to override its behaviour
 			3. Instanciate the robot class
 			4. Call update() from OvaClientMqtt periodically in the main loop
-			
+
 		### Arguments
 		* `playerState` - The new player's states and other attributes of the player
 		as a dict of str key and any typed value
@@ -379,7 +379,7 @@ class IRobot:
 			2. Rewrite this method to override its behaviour
 			3. Instanciate the robot class
 			4. Call update() from OvaClientMqtt periodically in the main loop
-			
+
 		### Arguments
 		* `arenaState` - The new arena's states and other attributes of the arena
 		as a dict of str key and any typed value
@@ -394,7 +394,7 @@ class IRobot:
 			2. Rewrite this method to override its behaviour
 			3. Instanciate the robot class
 			4. Call update() from OvaClientMqtt periodically in the main loop
-			
+
 		### Arguments
 		* `img` - A pillow Image instance on which you could do various operations. 
 		For more info, see https://pillow.readthedocs.io/en/stable/reference/Image.html
