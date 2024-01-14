@@ -29,14 +29,14 @@ ServerRules(referee).applyRules()
 # Lancement de l'arbitre
 referee.run
 
-noms_zombies = [
+# Création des zombies
+zombies_names = [
     "RigoloMort",
     "CervelleJoyeuse",
     "ZombiComique",
     "Risquatouille",
     "FarceurDécomposé",
 ]
-
-# Create zombies
-zombie_manager = ZombieManager(arbitre, noms_zombies)
+zombie_manager = ZombieManager(referee, zombies_names)
 zombie_manager.create_zombies()
+zombie_manager.run()

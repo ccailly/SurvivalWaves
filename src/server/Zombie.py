@@ -1,40 +1,32 @@
-import j2l.pytactx.agent as pytactx
 from random import randint
+from Referee import Referee
 
-class Zombie (pytactx.Agent):
-
-    def __init__(self, name: str) -> None:
-        super().__init__(
-            playerId=name,
-            arena="survivalwaves", 
-            username="demo", 
-            password="demo", 
-            server="mqtt.jusdeliens.com", 
-            verbosity=2
-        )
+class Zombie:
+    def __init__(self, referee: Referee, name: str) -> None:
+        self.referee = referee
+        self.name = name
 
     def wander(self) -> None:
         """
         Make the zombie wander randomly on the map
         """
-        self.move(randint(-1, 1), randint(-1, 1))
+        position = self.get_position()
+        newX = position[0] + randint(-1, 1)
+        newY = position[1] + randint(-1, 1)
+        print(f"Zombie {self.name} wandering to {newX}, {newY}")
+        self.referee.rulePlayer(self.name, 'x', newX)
+        self.referee.rulePlayer(self.name, 'y', newY)
+        self.referee.update()
 
-    def chase(self, x: int, y: int) -> None:
+    def chase(self) -> None:
         """
         Make the zombie chase a player
         """
-        self.moveTowards(x, y)
+        pass
 
-    def is_alive(self) -> bool:
+    def get_position(self) -> tuple:
         """
-        Check if the zombie is alive
+        Get the zombie position
         """
-        return self.life > 0
-
-    def player_close(self) -> (int, int):
-        """
-        Check if a player is close to the zombie
-        """
-        for name, attributs in self.range.items():
-            return (attributs['x'], attributs['y'])
-        return None
+        zombie = self.referee.range[self.name]
+        return (zombie['x'], zombie['y'])

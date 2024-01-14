@@ -1,64 +1,67 @@
 from Zombie import Zombie
 import threading
-import j2l.pytactx.agent as pytactx
+from Referee import Referee
 from time import sleep
 
 class ZombieManager:
-    
-    def __init__(self, arbitre: pytactx.Agent, zombies_names: list):
+    def __init__(self, referee: Referee, zombies_names: list):
         self.zombies = []
-        self.arbitre = arbitre
+        self.referee = referee
         self.zombies_names = zombies_names
-
-    def create_zombie(self, name: str):
-        """
-        Generate a zombie instance
-        """
-        zombie = Zombie(name)
-        zombie.update()
-        
-        self.zombie_rules(name)
-        self.manage_state(zombie)
 
     def create_zombies(self):
         """
-        Generate a list of zombies instances from a list of names
+        Create zombies in the arena
         """
-        
-        # Create a thread for each zombie
+        print("\nCreating Zombie...")
         for name in self.zombies_names:
-            print("Création du thread", name)
-            thread = threading.Thread(target=self.create_zombie, args=(name,))
-            self.zombies.append(thread)
-            thread.start()
-            
-        # Wait for all threads to finish
-        for thread in self.zombies:
-            thread.join()
-            
-        print("Tous les threads ont terminé.")
+            print(name)
+            self.zombies.append(Zombie(self.referee, name))
+            self.referee.rulePlayer(name, 'profile', 2)
+            self.referee.rulePlayer(name, 'team', 1)
+            self.referee.rulePlayer(name, 'life', 50)
+            self.referee.rulePlayer(name, 'x', 14)
+            self.referee.rulePlayer(name, 'y', 6)
+        self.referee.update()    
+        sleep(0.3)
+        print("Zombies created.")
 
-    def zombie_rules(self, name: str):
+    def remove_zombies(slef):
         """
-        Define the rules for the zombies
+        Remove all zombies from the arena
         """
-        # Change the profile of the zombie
-        self.arbitre.rulePlayer(name, 'profile', 1)
-        self.arbitre.update()
+        print("\nRemoving Zombies...")
+        self.zombies = []
+        for name, attributs in self.referee.range.items():
+            print(name)
+            self.referee.rulePlayer(name, 'life', 0)
+        self.referee.update()    
+        sleep(0.3)
+        print("Zombies removed.")
 
-    def manage_state(self, zombie: Zombie):
+    def zombies_action(self):
         """
-        Manage the state (wander or chase) of the zombies
+        Make all zombies do an action
+        """
+        print("\nZombies action...")
+        zombies_alive = self.referee.range
+        for zombie in self.zombies:
+            if zombie.name in zombies_alive:
+                self.action(zombie)
+            else:
+                self.zombies.remove(zombie)
+        print("Zombies action done.")
+
+    def action(self, zombie: Zombie) -> None:
+        """
+        Make a zombie do an action
+        """
+        zombie.wander()
+
+    def run(self):
+        """
+        Run the zombie manager
         """
         while True:
-            if not zombie.is_alive():
-                print("Le zombie", zombie.playerId, "est mort.")
-                break
-            
-            coords_closest_player = zombie.player_close()
-            if coords_closest_player is None:
-                zombie.wander()
-            else:
-                zombie.chase(coords_closest_player[0], coords_closest_player[1])
-
-            zombie.update()
+            self.zombies_action()
+            sleep(0.5)
