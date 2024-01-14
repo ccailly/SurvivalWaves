@@ -1,0 +1,25 @@
+@startuml sequence
+
+== Initialization ==
+Main -> Arbitre: Creation
+Main -> Server: Reset de l'arère
+Main -> Server: Application des règles prédéfinies de l'arène
+Main -> Arbitre: Lancement de l'arbitre
+
+== Déroulement ==
+Arbitre -> Arbitre: Nouvel état : attente des joueurs
+Arbitre -> Server: Regarde si la partie est lancée
+Arbitre -> Server: Empêche les joueurs de se déplacer tant que la partie n'est pas lancées 
+
+Server -> Arbitre: Lance la partie
+Arbitre -> Arbitre: Nouvel état : partie en cours
+
+Arbitre -> Agent_zombie: fait apparaitre les zombies
+Arbitre -> Server: Regarde si il y a encore des joueurs en vie
+Server -> Arbitre: Fin de la partie si il n'y a plus de joueurs en vie
+Arbitre -> Arbitre: Nouvel état : partie Terminée
+Arbitre -> Server: Fin de la partie
+
+Arbitre -> Arbitre: Nouvel état : attente des joueurs
+
+@enduml
