@@ -19,6 +19,9 @@ referee = Referee(playerId=playerId,
 						password="demo",
 						server="mqtt.jusdeliens.com",
 						verbosity=2)
+                        
+referee.rulePlayer(referee.playerId, 'x', 0)
+referee.rulePlayer(referee.playerId, 'y', 0)
 
 # Reset de l'arène
 referee.resetArena()
