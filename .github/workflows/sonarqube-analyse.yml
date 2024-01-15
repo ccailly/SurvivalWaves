@@ -1,14 +1,16 @@
-name: Build
+name: Analyse Sonarqube
 
 on:
   push:
     branches:
-      - main
+      - '*'
+  pull_request:
+    branches:
+      - '*'
 
 
 jobs:
-  build:
-    name: Build
+  sonarqube-analyse:
     runs-on: ubuntu-latest
     permissions: read-all
     steps:
