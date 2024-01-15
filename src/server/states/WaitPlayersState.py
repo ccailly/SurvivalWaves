@@ -17,7 +17,7 @@ class WaitPlayersState(AbstractState):
         else:
             if not hasattr(self, "_timer"):
                 self._timer = time.time()
-            self._referee.ruleArena('info', 'Game is running in {}s'.format(max(0, round(30 - (time.time() - self._timer)))))
+            self._referee.ruleArena('info', 'Game is running in {}s'.format(max(0, round(1 - (time.time() - self._timer)))))
 
         # Check if the dxMax and dyMax are set to 0 to avoid the players to move
         self._referee.ruleArena('dxMax', [0, 1, 0])
@@ -27,4 +27,4 @@ class WaitPlayersState(AbstractState):
         """
         Returns the next state
         """
-        return self if self.checks() or (hasattr(self, "_timer") and time.time() - self._timer < 30) else StartGameState(self.getReferee())
+        return self if self.checks() or (hasattr(self, "_timer") and time.time() - self._timer < 1) else StartGameState(self.getReferee())

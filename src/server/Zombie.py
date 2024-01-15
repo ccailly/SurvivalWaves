@@ -1,8 +1,7 @@
 from random import randint
-from Referee import Referee
 
 class Zombie:
-    def __init__(self, referee: Referee, name: str) -> None:
+    def __init__(self, referee, name: str) -> None:
         self.referee = referee
         self.name = name
 
