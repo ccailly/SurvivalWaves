@@ -841,7 +841,6 @@ class OvaClientMqtt(IRobot):
 	def __init__(self,robotId:str or None=None, arena:str or None=None, username:str or None=None, password:str or None=None, server:str or None=None, port:int=1883, imgOutputPath:str or None="img.jpeg", autoconnect:bool=True, useProxy:bool=True, verbosity:int=3, clientId:str or None=None, welcomePrint=True):
 		"""
 		Build a mqtt client to communicate with an ova robot through a mqtt broker
-
 		To join a public arena using mqtt.jusdeliens.com as server/broker, 
 		note that only read operations on robot will be allowed by default.
 		To be granted write authorization on a robot in an arena, an arena admin
@@ -856,7 +855,6 @@ class OvaClientMqtt(IRobot):
 
 		Once connected, the camera stream is automatically enabled
 		You can disable it using enableCamera(False) to reduce bandwidth consumption
-
 		### Arguments
 		* `robotId` - The unique name of the robot to control (e.g. ovaxxxxxxxxxxxx) as str
 		* `clientId` - The name of the ovamqttclient used for logging in the broker. Leave None will use a random one
@@ -887,7 +885,6 @@ class OvaClientMqtt(IRobot):
 		if ( password == None ):
 			password=input("🔑 password: ")
 		self.__startTime = datetime.now()
-
 		userLogin=""
 		try: userLogin=str(os.getlogin()) 
 		except: ...
@@ -1128,7 +1125,6 @@ class OvaClientMqtt(IRobot):
 		return self.__playerState
 	def getArenaState(self) -> dict[str,Any] :
 		return self.__arenaState
-
 	def enableCamera(self, enable:bool):
 		self.__cameraEnabled = enable
 	def stop(self):
@@ -1163,7 +1159,6 @@ class OvaClientMqtt(IRobot):
 			return False
 	def print(self) -> None:
 		self.__printer.print()
-
 	def __changeRobot(self, robotId, autoconnect):
 		anx.info("⏳ Connecting to robot "+str(robotId)+" ...")
 		self.disconnect()
