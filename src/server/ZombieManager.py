@@ -40,6 +40,7 @@ class ZombieManager:
             if zombie.name in zombies_alive:
                 self.action(zombie)
             else:
+                pass
                 # self.zombies.remove(zombie)
 
     def action(self, zombie: Zombie) -> None:

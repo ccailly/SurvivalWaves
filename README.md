@@ -6,7 +6,7 @@ Dans le cadre de la ressource R5.05 Programmation avancée.
 
 ## 🎲 Règles du jeu
 
-## Maquette
+Dans Survival Waves, le but est de survivre le plus longtemps face aux vagues de zombies qui déferlent. Pour cela, à l'aide des objets que vous pourrez ramasser, tuez tous les zombies pour passer à la vague suivante. Plus vous gagnez, plus le jeu se corse. Une fois vous et tous vos coéquipiers morts, le jeu s'arrête.
 
 ### Map
 ![Map](doc/map.jpeg)

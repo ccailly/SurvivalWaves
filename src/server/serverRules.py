@@ -51,7 +51,7 @@ class ServerRules:
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
             ],
-            'mapImgs': ['', 'rgba(255, 255, 255, 0.5)', 'https://d31sxl6qgne2yj.cloudfront.net/wordpress/wp-content/uploads/20190121140745/Minecraft-Zombie-Head.jpg'],
+            'mapImgs': ['', 'rgba(255, 255, 255, 0.1)', 'https://d31sxl6qgne2yj.cloudfront.net/wordpress/wp-content/uploads/20190121140745/Minecraft-Zombie-Head.jpg'],
             'mapHit' : [0, 0, 0],
             'mapBreakable' : [False, False, True],
             'pImgs' : ['https://d31sxl6qgne2yj.cloudfront.net/wordpress/wp-content/uploads/20190121140737/Minecraft-Villager-Head.jpg', 'https://d31sxl6qgne2yj.cloudfront.net/wordpress/wp-content/uploads/20190121140740/Minecraft-Wither-Head.jpg', 'https://d31sxl6qgne2yj.cloudfront.net/wordpress/wp-content/uploads/20190121140745/Minecraft-Zombie-Head.jpg'],
