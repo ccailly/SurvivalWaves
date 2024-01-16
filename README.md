@@ -25,19 +25,15 @@ Renvoyer vers README API
     * Je peux me déplacer d'une case par tick
     * Je peux attaquer les zombies à l'aide d'une arme à feu
     * Tuer un zombie redonne instantanément des munitions
-    * Je peux récupérer une arme par terre pour améliorer mes stats de dégâts
-    * Je peux ramasser des trousses de soins par terre et me soigne
     * Je peux voir toutes les unités joueur/objets/non-joeurs de la carte
-    * Je peux améliorer mes statistiques de vie/dégâts au fur et à mesure du nombre de zombies que je tue
 * **En tant que zombie** :
     * Je peux me déplacer aléatoirement
     * Je peux détecter un humain dans un rayon X pour lui foncer dessus
     * Je peux détecter un humain à n'importe quelle distance s'il me tire dessus
-    * Je peux attaquer et transformer un humain en X coups
+    * Je peux attaquer un humain en X coups
     * Je ne peux pas ramasser d'armes
 * **En tant qu'Arbitre** :
     * Je peux lancer une nouvelle vague
-    * Je peux faire apparaître des objets au début d'une vague
     * Je peux faire réapparaître tous les joueurs à chaque nouvelle manche
     * Je peux afficher les changements de manche
     * Je peux faire apparaître des zombies
@@ -66,7 +62,6 @@ Expliquer les points suivants
 - [ ] les données échangées entre chaque couche
 - [ ] les algorithmes
 - [ ] les machines
-- [ ] les protocoles réseaux
 
 ## ✅ Pré-requis 
 - pour l'administrateur
