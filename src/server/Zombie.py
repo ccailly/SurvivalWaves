@@ -5,9 +5,10 @@ class Zombie:
         self.referee = referee
         self.name = name
 
-    def wander(self) -> None:
+    def wander(self) -> tuple:
         """
         Make the zombie wander randomly on the map
+        @return: the new position
         """
         position = self.get_position()
         newX = position[0] + randint(-1, 1)
@@ -16,6 +17,7 @@ class Zombie:
         self.referee.rulePlayer(self.name, 'x', newX)
         self.referee.rulePlayer(self.name, 'y', newY)
         self.referee.update()
+        return (newX, newY)
 
     def chase(self) -> None:
         """

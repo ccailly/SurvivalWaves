@@ -7,7 +7,7 @@ class IZombie:
         """
         pass
 
-    def wander(self) -> None:
+    def wander(self) -> tuple:
         """
         Make the zombie wander randomly on the map
         """
