@@ -15,17 +15,12 @@ Dans Survival Waves, le but est de survivre le plus longtemps face aux vagues de
 ![Zombie](doc/zombie.png)
 
 ## 🎮 Use cases
-- pour l'administrateur
-Expliquer ce que peut/doit faire un administrateur qui souhaite lancer/administrer une arène de jeu avec des apprenants 
-
-- pour le joueur
-Renvoyer vers README API
 
 * **En tant que Joueur** :
     * Je peux me déplacer d'une case par tick
     * Je peux attaquer les zombies à l'aide d'une arme à feu
     * Tuer un zombie redonne instantanément des munitions
-    * Je peux voir toutes les unités joueur/objets/non-joeurs de la carte
+    * Je peux voir toutes les unités joueur/objets/non-joueurs de la carte
 * **En tant que zombie** :
     * Je peux me déplacer aléatoirement
     * Je peux détecter un humain dans un rayon X pour lui foncer dessus
@@ -38,8 +33,8 @@ Renvoyer vers README API
     * Je peux afficher les changements de manche
     * Je peux faire apparaître des zombies
     * Je peux augmenter le nombre de zombies à chaque vague et/ou améliorer leurs stats
-    * A la fin d'une manche, je peux modifier le score de la manche dans le scoreboard
-    * Si tous les survivants sont mort, je mets fin à la vague en cours et note le nombre de manches passé dans le scoreboard
+    * À la fin d'une manche, je peux modifier le score de la manche dans le scoreboard
+    * Si tous les survivants sont morts, je mets fin à la vague en cours et note le nombre de manches passées dans le scoreboard
 
 ### Déroulé d'une partie
 Un certain nombre de joueurs apparaissent sur la carte. 
@@ -51,33 +46,27 @@ Lorsque la partie commence, plusieurs zombies apparaissent en essayant de dévor
 ### Conditions de victoires
 Le joueur doit survivre au maximum de vague possible.
 
-## 🖧 Architecture matériel 
-(optionnel, peut être décrit avec le diagramme de séquence) 
-Schéma overview présentant les machines et protocoles (serveurs, clients, broker) avec texte expliquant le choix des technologies 
 
 ## 📞 Diagramme de séquence
 Expliquer les points suivants
-- [ ] les acteurs
-- [ ] le déroulé d'une partie en partant des use case
-- [ ] les données échangées entre chaque couche
-- [ ] les algorithmes
-- [ ] les machines
+- [x] les acteurs
+- [x] le déroulé d'une partie en partant des use case
+- [x] les données échangées entre chaque couche
+- [x] les machines
 
 ## ✅ Pré-requis 
 - pour l'administrateur
-Matériel et logiciel requis pour executer votre projet
+      Python3, pouvoir lancer l'arbitre
 - pour les apprenants 
-Rediriger vers README API
+      Python3, pouvoir lancer l'agent
 
-## ⚙️ Installation
-Step by step : commandes à executer par l'administrateur, paquets à installer ...
 
 ## 🧪 Tests
-- définition du plan de test ce qu'on attend quand on fait quoi 
-- step by step pour lancer les tests
+- asserts simple sur les fonctions
+- utilisation de Sonarqube pour les tests de sécurité
 
 ## 🛣️ Roadmap
-Ce qui reste à faire priorisé dans le temps
+Kanban lié au projet
 
 ## 🧑‍💻 Auteur(s)
 * ANGOT Alexandre
@@ -88,6 +77,4 @@ Ce qui reste à faire priorisé dans le temps
 ### Sources 
 - DALLE 3: pour la création de chaque illustration.
 
-## ⚖️ License
-S'appuyer sur https://choosealicense.com/ ou la doc de github
-Attention à vérifier la compatibilité de votre licence avec celles des modules utilisés
+
